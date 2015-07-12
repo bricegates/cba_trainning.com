@@ -1,0 +1,9 @@
+#symfony librairies
+vendor/*
+*/cache/*
+*/logs/*
+web/uploads/*
+web/bundles/*
+
+#Configuration files
+app/config/parameters.yml
