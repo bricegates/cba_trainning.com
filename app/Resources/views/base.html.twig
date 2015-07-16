@@ -1,155 +1,314 @@
-{#
-   This is the base template used as the application layout which contains the
-   common elements and decorates all the other templates.
-   See http://symfony.com/doc/current/book/templating.html#template-inheritance-and-layouts
-#}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Symfony Demo Application{% endblock %}</title>
+        <meta name="author" content="Brice LEBIKA" />
+        <meta name="description" content="Formation | Audit, Risque, Comptabilité, Fraude, Secteur public, Management de projet, Ventes et Négociations Commerciales, Audit interne, Risk Management">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <title>{% block title %} - CBA TRAINNING{% endblock %}</title>
 
+        <!-- start: CSS -->
         {% block stylesheets %}
-        {# uncomment the following lines to compile SCSS assets with Assetic
 
-            {% stylesheets filter="scssphp" output="css/app.css"
-                "%kernel.root_dir%/Resources/assets/scss/bootstrap.scss"
-                "%kernel.root_dir%/Resources/assets/scss/font-awesome.scss"
-                "%kernel.root_dir%/Resources/assets/css/*.css"
-                "%kernel.root_dir%/Resources/assets/scss/main.scss"
-            %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-        #}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">       
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-social.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/jquery.snippet.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style-switcher.css.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/colors/or.css') }}">
 
-            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        {% endblock %}
+            <!-- Icon Fonts -->
+            <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+        {% endblock %}        
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+        <!-- end: CSS -->
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
     <body id="{% block body_id %}{% endblock %}">
 
         {% block header %}
+            <!-- Begin Header -->
             <header>
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="{{ path('homepage') }}">
-                                Symfony Demo Application
-                            </a>
+                <!-- Begin Top Bar -->
+                <div class="top-bar top-bar-dark">
+                    <div class="container container-header">
+                        <!-- Address and Phone -->
+                        <div class="col-sm-7 hidden-xs contact-info">
+                            <span class="glyphicon glyphicon-envelope"></span> Bright Passage, Fond du Lac, 63138 USA  
+                            <span class="glyphicon glyphicon-phone"></span> (123) 1702983921
+                        </div>
+                        <!-- Social Buttons -->
+                        <div class="col-sm-5 text-right topmenu-holder">
+                            <ul class="topbar-list list-inline">
+                                <li><a data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                                <li><a href="pages-forms-register-login.html"><span class="glyphicon glyphicon-floppy-disk"></span> Register</a></li>
+                                <li>						
+                                    <a class="btn btn-social-icon btn-rw btn-primary">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-rw btn-primary">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-rw btn-primary">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset ('img/language/fr.png ')}}" class="img-thumbnail"  style="background: none;border:none;" width="40px"></a>
+                                    <a href="#"><img src="{{ asset ('img/language/en.png ')}}" class="img-thumbnail"  style="background: none;border:none;" width="40px"></a>
+                                </li>                                
 
-                            <button type="button" class="navbar-toggle"
-                                    data-toggle="collapse"
-                                    data-target=".navbar-collapse">
+                            </ul>
+                        </div>
+                    </div><!--/container header -->   
+                </div><!--/top bar -->   
+                <!-- End Top Bar -->
+
+                <!-- Login -->
+                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="loginLabel">Login</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Do you flex?
+                                        </label>
+                                    </div>
+                                </form><!-- /form -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-rw btn-primary">Login</button>
+                            </div>
+                        </div><!-- /modal content -->
+                    </div><!-- /modal dialog -->
+                </div><!-- /modal holder -->
+                <!-- End Login -->
+
+                <!-- Begin Navigation -->
+                <div class="navbar">
+                    <div class="container container-header">
+                        <div class="navbar-header">
+                            <!-- Brand -->
+                            <a href="index.html" class="navbar-brand">
+                                <img src="{{ asset ('img/logo/cba_logo.png ')}}" class="img-thumbnail" alt="Logo" style="border:none" width="90px"> 
+                            </a>
+                            <!-- Mobile Navigation -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                        </div>
-                        <div class="navbar-collapse collapse">
+                        </div><!-- /navbar header -->   
+
+                        <!-- Main Navigation -->
+                        <nav class="navbar-collapse collapse navHeaderCollapse" role="navigation">
                             <ul class="nav navbar-nav navbar-right">
-                                {% block header_navigation_links %}
-                                    <li>
-                                        <a href="{{ path('blog_index') }}">
-                                            <i class="fa fa-home"></i> Homepage
-                                        </a>
-                                    </li>
-
-                                    {# The 'app.user' condition is required to avoid issues in 404 and 500 error pages
-                                       As routing is done before security, error pages are not covered by any firewall.
-                                       This means you can't use is_granted() directly on these pages.
-                                       See http://symfony.com/doc/current/cookbook/security/form_login_setup.html#avoid-common-pitfalls
-                                    #}
-                                    {% if app.user and is_granted('ROLE_ADMIN') %}
-                                        <li>
-                                            <a href="{{ path('admin_post_index') }}">
-                                                <i class="fa fa-lock"></i> Backend
-                                            </a>
+                                <li><a class="active" href="pages-contact-2.html">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true">About Us<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="index.html">Our History</a></li>
+                                        <li><a href="index-home.html">Our Mission</a></li>
+                                        <li><a href="index-home-b.html">Our References</a></li>
+                                        <li><a href="index-carousel-subnav.html">Our Team</a></li>
+                                        <li><a href="dark-navigation-example.html">Join Us</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Trainning and Services<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="pages-pricing.html">Find</a></li
+                                        <li class="divider"></li>
+                                        <li><a href="pages-timeline.html">Audit interne</a></li>
+                                        <li><a href="pages-freebies.html">Risk management</a></li>
+                                        <li><a href="pages-freebies.html">Fraude</a></li>
+                                        <li><a href="pages-freebies.html">Secteur public</a></li>
+                                        <li><a href="pages-freebies.html">Management de projet</a></li>
+                                        <li><a href="pages-freebies.html">Ventes et négociations commerciales</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a class="trigger">Services</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="pages-forms-register-login.html">Formations à la cartes</a></li>
+                                                <li><a tabindex="-1" href="pages-contact-1.html">Formations sur site</a></li>
+                                                <li><a tabindex="-1" href="pages-contact-2.html">Onsite or Virtual Coaching</a></li>
+                                                <li><a tabindex="-1" href="pages-contact-2.html">Evaluation des compétences</a></li>
+                                                <li><a tabindex="-1" href="pages-contact-2.html">Corporate survey</a></li>
+                                            </ul>
                                         </li>
-                                    {% endif %}
-                                {% endblock %}
+                                    </ul>
+                                </li>
+                                <li><a href="pages-contact-2.html">Témoignages</a></li>
+                                <li><a href="pages-contact-2.html">Blog</a></li>
+                                <li><a href="pages-contact-2.html">Contact</a></li>
 
-                                {% if app.user %}
-                                    <li>
-                                        <a href="{{ path('security_logout') }}">
-                                            <i class="fa fa-sign-out"></i> Logout
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </header>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-user">
+                                        <li id="dropdownForm">
+                                            <div class="dropdown-form">
+                                                <form class="form-default form-inline p15">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control search-input" placeholder="Search...">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-rw btn-primary search-btn" type="button">Go!</button>
+                                                        </span>
+                                                    </div><!-- /input group -->  
+                                                </form><!-- /searh form -->  
+                                            </div><!-- /dropdown form -->  
+                                        </li><!-- /dropdownForm list item -->  
+                                    </ul><!-- /search dropdown -->  
+                                </li><!-- /search navbar list item -->  
+                            </ul><!-- /navbar right -->  
+                        </nav><!-- /nav -->  
+
+                    </div><!-- /container header -->   
+                </div><!-- /navbar -->   
+                <!-- End Navigation -->
+
+            </header><!-- /header -->
+            <!-- End Header -->
+
         {% endblock %}
 
-        <div class="container body-container">
-            {% block body %}
+    {% block body %}{% endblock %}
+
+
+    {% block footer %}
+        <!-- Begin Footer -->
+        <footer class="footer">
+            <div class="container">
                 <div class="row">
-                    <div id="main" class="col-sm-9">
-                        {% block main %}{% endblock %}
+                    <!-- About -->
+                    <div class="col-sm-3">
+                        <div class="heading-footer"><h4>About</h4></div>
+                        <p>Raleway Bootstrap 3 Template is what you need for your next project or client.</p>
+                        <a href="features.html" class="btn btn-primary btn-rw mt10">
+                            Buy now
+                        </a>
                     </div>
 
-                    <div id="sidebar" class="col-sm-3">
-                        {% block sidebar %}
-                            <div class="section about">
-                                <div class="well well-lg">
-                                    <p>
-                                        This is a <strong>demo application</strong> built in the
-                                        Symfony Framework to illustrate the recommended way of
-                                        developing Symfony applications.
-                                    </p>
-                                    <p>
-                                        For more information, check out the
-                                        <a href="http://symfony.com/doc">Symfony Documentation</a>.
-                                    </p>
-                                </div>
-                            </div>
-                        {% endblock %}
+                    <!-- Social -->
+                    <div class="col-sm-3 mg25-xs">
+                        <div class="heading-footer"><h4>Social Networks</h4></div>
+                        <a class="btn btn-social-icon btn-twitter btn-lg">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-instagram btn-lg">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook btn-lg">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-vimeo btn-lg">
+                            <i class="fa fa-vimeo-square"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin btn-lg">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-google-plus btn-lg">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-adn btn-lg">
+                            <i class="fa fa-adn"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-bitbucket btn-lg">
+                            <i class="fa fa-bitbucket"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-tumblr btn-lg">
+                            <i class="fa fa-tumblr"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-flickr btn-lg">
+                            <i class="fa fa-flickr"></i>
+                        </a>
                     </div>
-                </div>
-            {% endblock %}
-        </div>
-
-        {% block footer %}
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div id="footer-copyright" class="col-md-6">
-                            <p>&copy; {{ 'now'|date('Y') }} - The Symfony Project</p>
-                            <p>MIT License</p>
+                    <!-- Contact -->
+                    <div class="col-sm-3 mg25-xs">
+                        <div class="heading-footer"><h4>Contact us</h4></div>
+                        <p><span class="ion-home footer-info-icons"></span><small class="address">228 Park Ave S New York, NY 10003</small></p>
+                        <p><span class="ion-email footer-info-icons"></span><small class="address"><a href="mailto:info@raleway.com">info@raleway.com</a></small></p>
+                        <p><span class="ion-ios7-telephone footer-info-icons"></span><small class="address">+11192386513</small></p>
+                    </div>
+                    <!-- Recent Work -->
+                    <div class="col-sm-3 hidden-xs">
+                        <div class="heading-footer"><h4>Recent Work</h4></div>
+                        <div class="col-xs-4 recent-work-padding">
+                            <a href="images/projects/web2.jpg" class="thumbnail image-zoom-link">
+                                <img src="images/projects/thumbs/web2.jpg" alt="..." class="thumbnail img-responsive">
+                            </a>
                         </div>
-                        <div id="footer-resources" class="col-md-6">
-                            <p>
-                                <a href="https://twitter.com/symfony"><i class="fa fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/SensioLabs"><i class="fa fa-facebook"></i></a>
-                                <a href="http://symfony.com/blog"><i class="fa fa-rss"></i></a>
-                            </p>
+                        <div class="col-xs-4 recent-work-padding">
+                            <a href="images/projects/web3.jpg" class="thumbnail image-zoom-link">
+                                <img src="images/projects/thumbs/web3.jpg" alt="..." class="thumbnail img-responsive">
+                            </a>
+                        </div>
+                        <div class="col-xs-4 recent-work-padding">
+                            <a href="images/projects/illustration1.jpg" class="thumbnail image-zoom-link">
+                                <img src="images/projects/thumbs/illustration1.jpg" alt="..." class="thumbnail img-responsive">
+                            </a>
                         </div>
                     </div>
-                </div>
-            </footer>
-        {% endblock %}
+                </div><!-- /row -->
+                <!-- Copyright -->
+                <div class="row">
+                    <hr class="dark-hr">
+                    <div class="col-sm-11 col-xs-10">
+                        <p class="copyright">© 2015 CBA TRAINNING. All rights reserved. Designed by <b>Brice LEBIKA</b>.</p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 text-right">
+                        <a href="#" class="scroll-top"><div class="footer-scrolltop-holder"><span class="ion-ios7-arrow-up footer-scrolltop"></span></div></a>
+                    </div>
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </footer><!-- /footer -->
+        <!-- End Footer --> 
 
-        {% block javascripts %}
-        {# uncomment the following lines to combine and minimize JavaScript assets with Assetic
-            {% javascripts filter="?jsqueeze" output="js/app.js"
-                "%kernel.root_dir%/Resources/assets/js/jquery-2.1.4.js"
-                "%kernel.root_dir%/Resources/assets/js/bootstrap-3.3.4.js"
-                "%kernel.root_dir%/Resources/assets/js/highlight.pack.js" %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-        #}
+    {% endblock %}
 
-            <script src="{{ asset('js/app.js') }}"></script>
+    {% block javascripts %}    
+        <script src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('js/hover-dropdown.js') }}"></script>
+        <script src="{{ asset('js/owl.carousel.js') }}"></script>
+        <script src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('js/scrollReveal.js') }}"></script>
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.fitvids.js') }}"></script>
+        <script src="{{ asset('js/style-switcher.js') }}"></script>
+        <script src="{{ asset('js/activate-snippet.js') }}"></script>
+        <script src="{{ asset('js/skrollr.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
 
-            <script>
-                $(document).ready(function() {
-                    hljs.initHighlightingOnLoad();
-                });
-            </script>
-        {% endblock %}
-
-    </body>
+</body>
 </html>

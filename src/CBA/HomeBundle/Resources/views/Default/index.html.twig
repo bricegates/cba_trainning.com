@@ -1,0 +1,247 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Home {{parent()}}{% endblock %}
+
+{% block body %}
+    <!-- Begin Carousel -->
+    <div class="carousel">
+        <div id="carouselHome" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselHome" data-slide-to="1"></li>
+                <li data-target="#carouselHome" data-slide-to="2"></li>
+                <li data-target="#carouselHome" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Begin Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <!-- Begin Item 1 -->
+                <div class="item active">
+                    <!-- Item BG -->
+                    <div style="background-image:url('{{ asset ('img/backgrounds/slider.jpg ')}}');background-color: #ff7454;" data-0="background-position:0px 0px;" data-500="background-position:0px -250px;">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-right">
+                                <!-- Content -->
+                                <div class="fadeInLeft-animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 thumbnail">
+                                        <img src="{{ asset ('img/projects/print1.jpg ')}}" class="img-responsive carousel-image" class="img-thumbnail" width="450px" alt="Responsive Showcase">
+                                    </div>
+                                </div>
+                                <div class="fadeInRight-animated" data-animation="fadeInRight">
+                                    <div class="carousel-description col-sm-5  col-sm-offset-1">
+                                        <h3 class="heavy text-white"><span class="carousel-title-bgclear">WELCOME ON CBA TRAINNING Website</span></h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta ante in elementum iaculis. Aenean sit amet augue efficitur orci ultrices ultricies. In sit amet enim eu nunc malesuada pretium sed eget arcu. Fusce a sodales nunc, id tempor quam. Duis ac ligula eu lectus sodales varius feugiat ac purus. Cras et risus id nisl scelerisque scelerisque eget nec elit. Phasellus auctor suscipit quam ut aliquet.</p>
+                                        <a href="features.html" class="btn btn-rw btn-primary">
+                                            Find a trainning <span class="glyphicon glyphicon-search"></span>
+                                        </a>
+                                    </div>
+                                </div>                                    
+                            </div><!-- /content container -->
+                        </div><!-- /container -->
+                    </div><!-- /bg div -->
+                </div><!-- /item -->
+                <!-- End Item 1 -->
+
+                <!-- Begin Item 2 -->
+                <div class="item">
+                    <!-- Item BG -->
+                    <div style="background-image:url('{{ asset ('img/backgrounds/slider8.jpg ')}}');background-color: #ff7454;" data-0="background-position:0px 0px;" data-500="background-position:0px -250px;">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-left">
+                                <!-- Content -->
+                                <div class="fadeInRight-animated" data-animation="fadeInRight">
+                                    <div class="carousel-description mt10 col-sm-5">
+                                        <h4 class="heavy text-white"><span class="carousel-title-bg">UNE LARGE GAMME DE FORMATION</span></h4>
+                                        <h4 class="heavy text-white"><span class="carousel-title-bg">Audit, risque, Management, etc...</span></h4>
+                                        <p>Etiam accumsan orci in magna ullamcorper, in mattis lacus pellentesque. Integer ex sem, congue vel lectus nec, pulvinar fringilla metus. Nunc euismod, velit eget aliquam vehicula, nibh tortor molestie eros, vel faucibus massa dolor non magna. </p>
+                                        <a href="features.html" class="btn btn-rw btn-primary">
+                                            Features &nbsp;&nbsp;<span class="ion-ios7-arrow-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Img -->
+                                <div class="fadeInLeft-animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 hidden-xs thumbnail col-sm-offset-1">
+                                        <img src="{{ asset ('img/projects/print2.jpg ')}}" class="img-responsive carousel-image" class="img-thumbnail" width="450px" alt="Responsive Showcase">
+                                    </div>
+                                </div>                                
+                            </div><!-- /content container -->
+                        </div><!-- /container -->
+                    </div><!-- /bg div -->
+                </div><!-- /item -->
+                <!-- End Item 2 -->
+
+                <!-- Begin Item 3 -->
+                <div class="item">
+                    <!-- Item BG -->
+                    <div style="background-image:url('{{ asset ('img/backgrounds/slider1.jpg ')}}');background-color: #ff7454;" data-0="background-position:0px 0px;" data-500="background-position:0px -250px;">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-right">
+                                <!-- Content -->
+                                <div class="fadeInRight-animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 thumbnail">
+                                        <img src="{{ asset ('img/projects/print3.jpg ')}}" class="img-responsive carousel-image" class="img-thumbnail" width="450px" alt="Responsive Showcase">
+                                    </div>
+                                </div>                                
+                                <div class="fadeInRight-animated" data-animation="fadeInRight">
+                                    <div class="carousel-description col-sm-5 col-sm-offset-1">
+                                        <h3 class="heavy text-white"><span class="carousel-title-bg">DES SERVICES A LA CARTE</span></h3>
+                                        <h4 class="heavy text-white"><span class="carousel-title-bgclear">Pour vous et votre entreprise</span></h4>
+                                        <p>Cras semper augue at eros tempus lobortis. Nulla rhoncus nunc lacus, a pellentesque libero sagittis quis. Fusce mauris mauris, scelerisque sed aliquam non, mattis non nibh. Donec et neque ex. Donec sed libero sit amet dolor pulvinar pretium. Duis et ipsum at diam cursus faucibus. Nulla urna mauris, blandit at lectus sed, posuere molestie magna. Quisque interdum efficitur augue ac iaculis. Mauris felis ex,</p>
+                                    </div>
+                                </div>
+                            </div><!-- /content container -->
+                        </div><!-- /container -->
+                    </div><!-- /bg div -->
+                </div><!-- /item -->
+                <!-- End Item 3 -->
+
+                <!-- Begin Item 4  -->
+                <div class="item">
+                    <!-- Item BG -->
+                    <div style="background-image:url('{{ asset ('img/backgrounds/slider2.jpg ')}}');background-color: #ff7454;" data-0="background-position:0px 0px;" data-500="background-position:0px -250px;">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-right">
+                                <!-- Content -->
+                                <div class="fadeInLeft-animated" data-animation="fadeInRight">
+                                    <div class="carousel-description col-sm-5">
+                                        <h3 class="heavy text-white"><span class="carousel-title-bgclear">Contactez nous pour tout complèment d'information</span></h3>                                        
+                                        <p>Cras semper augue at eros tempus lobortis. Nulla rhoncus nunc lacus, a pellentesque libero sagittis quis. Fusce mauris mauris, scelerisque sed aliquam non, mattis non nibh. Donec et neque ex. Donec sed libero sit amet dolor pulvinar pretium. Duis et ipsum at diam cursus faucibus. Nulla urna mauris, blandit at lectus sed, posuere molestie magna. Quisque interdum efficitur augue ac iaculis. Mauris felis ex,</p>
+                                                                                <a href="features.html" class="btn btn-rw btn-primary">
+                                            Laissez nous un message ? &nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="fadeOutRight-animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 col-sm-offset-1 thumbnail">
+                                        <img src="{{ asset ('img/projects/print4.jpg ')}}" class="img-responsive carousel-image" class="img-thumbnail" width="450px" alt="Responsive Showcase">
+                                    </div>
+                                </div>
+                            </div><!-- /content container -->
+                        </div><!-- /container -->
+                    </div><!-- /bg div -->
+                </div><!-- /item -->
+                <!-- End Item 4 -->
+
+            </div><!-- /carousel inner -->
+            <!-- End Wrapper for slides -->
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carouselHome" role="button" data-slide="prev">
+                <span class="ion-ios7-arrow-left carousel-arrow-left" aria-hidden="true"></span>
+            </a>
+            <a class="right carousel-control" href="#carouselHome" role="button" data-slide="next">
+                <span class="ion-ios7-arrow-right carousel-arrow-right" aria-hidden="true"></span>
+            </a>
+
+        </div><!-- /carousel id div -->
+    </div><!-- /carousel div -->
+    <!-- End Carousel -->
+
+    <!-- Begin Skills -->
+    <div class="pt40 mb40 border-top">
+        <div class="container">
+            <!-- Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="lead text-center">Our <b><mark>Services</mark></b><br></p>
+                    <hr style="width:200px">
+                </div>
+            </div>
+            <div class="row">
+                <!-- Content 1 -->
+                <div class="col-sm-4" data-sr="enter left over 1s">
+                    <h4><span class="ion-beaker bordered-icon-sm mr15"></span> Formations à la carte</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+                <!-- Content 2 -->
+                <div class="col-sm-4 mt20-xs" data-sr="enter top over 1s">
+                    <h4><span class="ion-beer bordered-icon-sm mr15"></span> Formations sur site</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+                <!-- Content 3 -->
+                <div class="col-sm-4 mt20-xs" data-sr="enter right over 1s">
+                    <h4><span class="ion-home bordered-icon-sm mr15"></span> Pnsite or Virtual Coaching</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+            </div>
+            <div class="row mt20">
+                <!-- Content 4 -->
+                <div class="col-sm-4" data-sr="enter left over 1s">
+                    <h4><span class="ion-android-camera bordered-icon-sm mr15"></span> Evaluation des compétences</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+                <!-- Content 5 -->
+                <div class="col-sm-4 mt20-xs" data-sr="enter bottom over 1s">
+                    <h4><span class="ion-android-earth bordered-icon-sm mr15"></span> Corporate survey</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+                <!-- Content 6 -->
+                <div class="col-sm-4 mt20-xs" data-sr="enter right over 1s">
+                    <h4><span class="ion-android-lightbulb bordered-icon-sm mr15"></span> Et Autres</h4>
+                    <p class="no-margin">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
+                </div>
+            </div>
+        </div><!-- /container -->
+    </div><!-- /cta -->
+    <!-- End Skills -->
+
+    <!-- Begin Begin Carousel + Content -->
+    <div class="background-light-grey pt40 pb40">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Carousel -->
+                <div class="col-sm-4" data-sr="enter left over .9s">
+                    <div id="carouselHome2" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselHome2" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselHome2" data-slide-to="1"></li>
+                            <li data-target="#carouselHome2" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div style="height:260px;"><img src="{{ asset ('img/team/rigo.jpg')}}" class="img-thumbnail" alt="Logo"> </div>
+                            </div>
+                            <div class="item">
+                                <div style="height:260px;"><img src="{{ asset ('img/team/alex.jpg')}}" class="img-thumbnail" alt="Logo"> </div>
+                            </div>
+                            <div class="item">
+                                <div style="height:260px;"><img src="{{ asset ('img/team/brice.jpg')}}" class="img-thumbnail" alt="Logo"> </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carouselHome2" role="button" data-slide="prev">
+                            <span class="ion-ios7-arrow-left carousel-arrow-left" aria-hidden="true"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carouselHome2" role="button" data-slide="next">
+                            <span class="ion-ios7-arrow-right carousel-arrow-right" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div><!-- /column -->
+                <!-- End Carousel -->
+
+                <!-- Content Inside -->
+                <div class="col-sm-8">
+                    <div class="heading mb20 mt30-xs"><h4><span class="ion-beaker mr15"></span>Our Team</h4></div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu risus libero. Donec et lorem lacinia, <a class="tooltip-active" data-toggle="tooltip" data-placement="top" title="Tooltip on top">adipiscing</a> nunc nec, hendrerit sapien. Sed in scelerisque tortor. Praesent porttitor odio non ullamcorper gravida.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu risus libero. Donec et lorem lacinisent porttitor odio non ullamcorper gravida.</p>
+                    <!-- List -->
+                    <ul class="list-arrow-2-color no-margin">
+                        <li><small>Etiam mollis pharetra adipiscing. Etiam porta in sem vitae suscipit. </small></li>
+                        <li><small>Consectetur adipiscing elit. Maecenas tempsam suscipit sagittis vestibulum.</small></li>
+                        <li><small>Nulla volutpat aliquam velit</small></li>
+                        <li><small>Faucibus porta lacus fringilla vel</small></li>
+                    </ul>  
+                </div><!-- /column -->
+                <!-- End Content Inside -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /content -->
+    <!-- End Begin Carousel + Content -->
+{% endblock %}
