@@ -2710,14 +2710,46 @@ footer a {
 @-ms-viewport{ width:auto !important; }
 
 .thumbnail {
-  display: block;
-  padding: 4px;
-  line-height: 1;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    display: block;
+    padding: 4px;
+    line-height: 1;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.post-heading {
+    display:block;
+    background:#fafafa;
+    padding:1px;
+    margin:2px;
+    border:1px dotted #d2d2d2;
+    border-left:3px solid #e39732;
+}
+
+.post-heading h3 {
+    margin:7px 0;
+    font-size:15px;
+    font-weight : bold;
+    color:#666666;
+}
+.imgpost {
+    margin: 2px;
+    float: left;
+    padding-right:3px;
+    height : 90px;
+    border-right:3px solid #e39732;
+}
+
+#logo_brand{
+     border: 1px solid #2d2d2d;
+     background : #2d2d2d;
+     margin-top : 1px;
+box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.75);
+-moz-box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.75);
+-webkit-box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.75);
 }

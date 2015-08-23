@@ -1,0 +1,22 @@
+sonata_news:
+    title:        Sonata Project
+    link:         http://sonata-project.org
+    description:  Cool bundles on top of Symfony2
+    salt:         'secureToken'
+    permalink_generator: sonata.news.permalink.date # sonata.news.permalink.category
+
+    comment:
+        notification:
+            emails:   [contact@cba-trainning.com, contact@cba-trainning.com]
+            from:     no-reply@cba-trainning.com
+            template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                #metadata_cache_driver: apc
+                #query_cache_driver: apc
+                #result_cache_driver: apc
+                mappings:
+                    ApplicationSonataNewsBundle: ~
+                    SonataNewsBundle: ~

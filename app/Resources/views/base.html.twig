@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,14 +49,19 @@
                     <div class="container container-header">
                         <!-- Address and Phone -->
                         <div class="col-sm-7 hidden-xs contact-info">
-                            <span class="glyphicon glyphicon-envelope"></span> Bright Passage, Fond du Lac, 63138 USA  
-                            <span class="glyphicon glyphicon-phone"></span> (123) 1702983921
+                            <span class="ion-android-mail default_color"></span> 10 on affichera l'adresse, Washington 45245 USA  
+                            <span class="glyphicon glyphicon-phone"></span> (001) 1702983921
                         </div>
                         <!-- Social Buttons -->
                         <div class="col-sm-5 text-right topmenu-holder">
                             <ul class="topbar-list list-inline">
-                                <li><a data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                                <li><a href="pages-forms-register-login.html"><span class="glyphicon glyphicon-floppy-disk"></span> Register</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li>Bonjour <b> {{app.user.firstname}}</b></li>
+                                    <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-remove-sign"></span> Logout</a></li>
+                                    {% else %}
+                                    <li><a data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                                    <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-floppy-disk"></span> Register</a></li>
+                                    {% endif %}                               
                                 <li>						
                                     <a class="btn btn-social-icon btn-rw btn-primary">
                                         <i class="fa fa-twitter"></i>
@@ -69,11 +73,6 @@
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#"><img src="{{ asset ('img/language/fr.png ')}}" class="img-thumbnail"  style="background: none;border:none;" width="40px"></a>
-                                    <a href="#"><img src="{{ asset ('img/language/en.png ')}}" class="img-thumbnail"  style="background: none;border:none;" width="40px"></a>
-                                </li>                                
-
                             </ul>
                         </div>
                     </div><!--/container header -->   
@@ -81,7 +80,7 @@
                 <!-- End Top Bar -->
 
                 <!-- Login -->
-                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+                <div class="modal fade" id="login">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -89,24 +88,27 @@
                                 <h4 class="modal-title" id="loginLabel">Login</h4>
                             </div>
                             <div class="modal-body">
-                                <form role="form">
+                                <form action="{{ path('fos_user_security_check') }}" method="post">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="ion-android-mail default_color" style="font-size:9px;"></span></div>
+                                            <input class="form-control" type="email" placeholder="Enter email" name="_username" id="username">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="ion-ios7-locked default_color"></span></div>
+                                            <input type="password" class="form-control" placeholder="Password" name="_password" id="password">
+                                        </div>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Do you flex?
+                                            <input type="checkbox"> Remember me
                                         </label>
-                                    </div>
+                                    </div>   
+                                    <hr class="mb20 mt15">
+                                    <button type="submit" class="button button-glow button-rounded button-primary">Submit</button> &nbsp;&nbsp;&nbsp;<small><a href="{{ path('fos_user_resetting_request')}}">Forgot your password?</a></small>
                                 </form><!-- /form -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-rw btn-primary">Login</button>
                             </div>
                         </div><!-- /modal content -->
                     </div><!-- /modal dialog -->
@@ -118,8 +120,8 @@
                     <div class="container container-header">
                         <div class="navbar-header">
                             <!-- Brand -->
-                            <a href="index.html" class="navbar-brand">
-                                <img src="{{ asset ('img/logo/cba_logo.png ')}}" class="img-thumbnail" alt="Logo" style="border:none" width="90px"> 
+                            <a href="{{ path('cba_home_homepage') }}" class="navbar-brand laterals">
+                                <img src="{{ asset ('img/logo/cba_logo.png ')}}" id="logo_brand" class="img-thumbnail" alt="Logo" width="170px"> 
                             </a>
                             <!-- Mobile Navigation -->
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -145,34 +147,38 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Trainning and Services<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Trainning<span class="fa fa-angle-down dropdown-arrow"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="pages-pricing.html">Find</a></li
-                                        <li class="divider"></li>
-                                        <li><a href="pages-timeline.html">Audit interne</a></li>
-                                        <li><a href="pages-freebies.html">Risk management</a></li>
-                                        <li><a href="pages-freebies.html">Fraude</a></li>
-                                        <li><a href="pages-freebies.html">Secteur public</a></li>
-                                        <li><a href="pages-freebies.html">Management de projet</a></li>
-                                        <li><a href="pages-freebies.html">Ventes et négociations commerciales</a></li>
                                         <li class="dropdown-submenu">
-                                            <a class="trigger">Services</a>
+                                            <a class="trigger">Risque</a>
                                             <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="pages-forms-register-login.html">Formations à la cartes</a></li>
-                                                <li><a tabindex="-1" href="pages-contact-1.html">Formations sur site</a></li>
-                                                <li><a tabindex="-1" href="pages-contact-2.html">Onsite or Virtual Coaching</a></li>
-                                                <li><a tabindex="-1" href="pages-contact-2.html">Evaluation des compétences</a></li>
-                                                <li><a tabindex="-1" href="pages-contact-2.html">Corporate survey</a></li>
+                                                <li><a tabindex="-1" href="l">Audit Interne</a></li>
+                                                <li><a tabindex="-1" href="l">Fraude</a></li>
+                                                <li><a tabindex="-1" href="l">Risk Management</a></li>
                                             </ul>
                                         </li>
+                                        <li><a tabindex="-1" href="l">Secteur Public</a></li>
+                                        <li><a tabindex="-1" href="l">Management de projet</a></li>
+                                        <li><a tabindex="-1" href="l">Ventes et négociations commerciales</a></li>
                                     </ul>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Services<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="l">Fraud Risk Assessment</a></li>
+                                        <li><a tabindex="-1" href="l">Internal Audit Capabaility Assessment</a></li>
+                                        <li><a tabindex="-1" href="l">Analyse des performances commerciales</a></li>
+                                        <li><a tabindex="-1" href="l">Evaluation et design des systemes de motivation des commerciaux</a></li>
+                                        <li><a tabindex="-1" href="l">Onsite or Virtual Coaching</a></li>
+                                        <li><a tabindex="-1" href="l">Corporate Survey (Sondage)</a></li>                                        
+                                    </ul>
+                                </li>                                
                                 <li><a href="pages-contact-2.html">Témoignages</a></li>
                                 <li><a href="pages-contact-2.html">Blog</a></li>
                                 <li><a href="pages-contact-2.html">Contact</a></li>
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                                    <a href="#" class="dropdown-toggle dropdown-form-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-user">
                                         <li id="dropdownForm">
                                             <div class="dropdown-form">
@@ -211,9 +217,9 @@
                     <!-- About -->
                     <div class="col-sm-3">
                         <div class="heading-footer"><h4>About</h4></div>
-                        <p>Raleway Bootstrap 3 Template is what you need for your next project or client.</p>
+                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Integer a elit turpis. Phasellus non varius mi. Nam bibendum in mauris at sollicitudin lacinia.</p>
                         <a href="features.html" class="btn btn-primary btn-rw mt10">
-                            Buy now
+                            Read more
                         </a>
                     </div>
 
@@ -255,27 +261,13 @@
                     <div class="col-sm-3 mg25-xs">
                         <div class="heading-footer"><h4>Contact us</h4></div>
                         <p><span class="ion-home footer-info-icons"></span><small class="address">228 Park Ave S New York, NY 10003</small></p>
-                        <p><span class="ion-email footer-info-icons"></span><small class="address"><a href="mailto:info@raleway.com">info@raleway.com</a></small></p>
-                        <p><span class="ion-ios7-telephone footer-info-icons"></span><small class="address">+11192386513</small></p>
+                        <p><span class="ion-email footer-info-icons"></span><small class="address"><a href="mailto:contact@cba.academy">contact@cba.academy</a></small></p>
+                        <p><span class="ion-ios7-telephone footer-info-icons"></span><small class="address">+11192386513 / +237699878952</small></p>
                     </div>
                     <!-- Recent Work -->
                     <div class="col-sm-3 hidden-xs">
-                        <div class="heading-footer"><h4>Recent Work</h4></div>
-                        <div class="col-xs-4 recent-work-padding">
-                            <a href="images/projects/web2.jpg" class="thumbnail image-zoom-link">
-                                <img src="images/projects/thumbs/web2.jpg" alt="..." class="thumbnail img-responsive">
-                            </a>
-                        </div>
-                        <div class="col-xs-4 recent-work-padding">
-                            <a href="images/projects/web3.jpg" class="thumbnail image-zoom-link">
-                                <img src="images/projects/thumbs/web3.jpg" alt="..." class="thumbnail img-responsive">
-                            </a>
-                        </div>
-                        <div class="col-xs-4 recent-work-padding">
-                            <a href="images/projects/illustration1.jpg" class="thumbnail image-zoom-link">
-                                <img src="images/projects/thumbs/illustration1.jpg" alt="..." class="thumbnail img-responsive">
-                            </a>
-                        </div>
+                        <div class="heading-footer"><h4>Take A Quizz</h4></div>
+                        <a href="#" class="button button-glow button-rounded button-primary btn-block">I'm Ready</a>
                     </div>
                 </div><!-- /row -->
                 <!-- Copyright -->

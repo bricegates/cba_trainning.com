@@ -1,100 +1,84 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body_id 'login' %}
+{% block title %}Connexion - {{parent()}}{% endblock %}
 
-{% block main %}
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error.messageKey|trans(error.messageData) }}
-        </div>
-    {% endif %}
-
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="well">
-                <form action="{{ path('security_login_check') }}" method="post">
-                    <fieldset>
-                        <legend><i class="fa fa-lock"></i> Secure Sign in</legend>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="_password" class="form-control" />
-                        </div>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-sign-in"></i> Sign in
-                        </button>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-
-        <div id="login-help" class="col-sm-7">
-            <h3>
-                <i class="fa fa-long-arrow-left"></i>
-                Try either of the following users
-            </h3>
-
-            <table class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Role</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>john_user</td>
-                        <td>kitten</td>
-                        <td><code>ROLE_USER</code> (regular user)</td>
-                    </tr>
-                    <tr>
-                        <td>anna_admin</td>
-                        <td>kitten</td>
-                        <td><code>ROLE_ADMIN</code> (administrator)</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div id="login-users-help" class="panel panel-default">
-                <div class="panel-body">
-                    <p>
-                        <span class="label label-success">NOTE</span>
-                        If these users don't work, reload application fixtures by
-                        running this command from the terminal: <br/>
-
-                        <code class="console">$ php app/console doctrine:fixtures:load</code>
-                    </p>
-
-                    <p>
-                        <span class="label label-success">TIP</span>
-                        If you want to create new users, run this other command: <br/>
-
-                        <code class="console">$ php app/console app:add-user</code>
-                    </p>
+{% block body %}
+    <!-- Begin Page Header -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title -->
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 col-xs-12">
+                    <h1>REGISTER &amp; LOGIN</h1>
                 </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-{% block sidebar %}
 
-    {{ parent() }}
+                <!-- Breadcrumbs -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb">
+                        <li><span class="ion-home breadcrumb-home"></span><a href="index.html">Home</a></li>
+                        <li>Pages</li>
+                        <li>Register &amp; Login</li>
+                    </ol>
+                </div><!-- /column -->  
+            </div><!-- /row -->  
+        </div><!-- /container -->  
+    </div><!-- /page header -->  
 
-    {{ show_source_code(_self) }}
-{% endblock %}
+</header><!-- /header -->
+<!-- End Header -->
 
-{% block javascripts %}
-    {{ parent() }}
+<!-- Begin Content -->
+<div class="content-40mg">
+    <div class="container">
 
-    <script>
-        $(document).ready(function() {
-            $('#username').val('anna_admin');
-            $('#password').val('kitten');
-        });
-    </script>
+        <div class="row">
+
+            <!-- Begin Login -->
+            <div class="col-sm-6">
+                <div class="panel no-margin panel-default panel-primary">
+                    <div class="panel-heading ">Login to your account</div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><span class="ion-android-mail default_color" style="font-size:9px;"></span></div>
+                                    <input class="form-control" type="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><span class="ion-ios7-locked default_color"></span></div>
+                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            <hr class="mb20 mt15">
+                            <button type="submit" class="button button-glow button-rounded button-primary">Submit</button> &nbsp;&nbsp;&nbsp;<small><a href="{{ path('fos_user_resetting_request')}}">Forgot your password?</a></small>
+                        </form><!-- /form -->
+                    </div><!-- /panel body -->
+                </div><!-- /panel -->
+            </div><!-- /column-->
+            <!-- End Login -->
+
+            <!-- Image -->
+            <div class="col-sm-6 mt30-xs">
+                <div class="panel no-margin panel-default panel-primary">
+                    <div class="panel-heading">.</div>
+                    <div class="panel-body">
+                        <img src="{{ asset ('img/projects/loginlock.png ')}}"  class="img-responsive"> 
+                    </div><!-- /panel body -->
+                </div><!-- /panel -->
+            </div><!-- /column-->
+            <!-- End Register -->
+
+        </div><!-- /row -->
+
+    </div><!-- /container -->
+</div><!-- /content -->
+<!-- End Content -->
 {% endblock %}

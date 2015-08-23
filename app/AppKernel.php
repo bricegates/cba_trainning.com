@@ -3,10 +3,9 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class AppKernel extends Kernel
-{
-    public function registerBundles()
-    {
+class AppKernel extends Kernel {
+
+    public function registerBundles() {
         // When you install a third-party bundle or create a new bundle in your
         // application, you must add it in the following array to register it
         // in the application. Otherwise, the bundle won't be enabled and you
@@ -23,6 +22,33 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new AppBundle\AppBundle(),
             new CBA\HomeBundle\CBAHomeBundle(),
+            new CBA\UserBundle\CBAUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+                                new JMS\SerializerBundle\JMSSerializerBundle(),
+                        new Sonata\MediaBundle\SonataMediaBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\UserBundle\SonataUserBundle(),
+                        new Sonata\NewsBundle\SonataNewsBundle(),
+             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+            new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
+                        new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\SeoBundle\SonataSeoBundle(),
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+            new Sonata\NotificationBundle\SonataNotificationBundle(),
+            new Sonata\DatagridBundle\SonataDatagridBundle(),
+
         );
 
         // Some bundles are only used while developing the application or during
@@ -39,8 +65,8 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
-    {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    public function registerContainerConfiguration(LoaderInterface $loader) {
+        $loader->load(__DIR__ . '/config/config_' . $this->getEnvironment() . '.yml');
     }
+
 }

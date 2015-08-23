@@ -284,3 +284,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 .footer-light .heading-footer h2, .footer-light .heading-footer h3, .footer-light .heading-footer h4 {
 	border-bottom: 2px solid #e1a759;
 }
+
+.default_color{
+    color : #e1a759;
+}

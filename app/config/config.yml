@@ -8,6 +8,10 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: @CBAUserBundle/Resources/config/admin.yml }
+    - { resource: sonata/sonata_news.yml }
+    - { resource: sonata/sonata_media.yml }
+    - { resource: sonata/sonata_formater.yml }
 
 # Basic configuration for the Symfony framework features
 framework:
@@ -74,6 +78,8 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         path:     "%database_path%"
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -86,3 +92,39 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+fos_user:
+    db_driver:     orm
+    firewall_name: secured_area
+    user_class:    CBA\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
+    resetting:
+        email:
+            template: email/password_resetting.email.twig   
+    registration:
+        form:
+            type: cba_user_registration
+        confirmation:
+            from_email:
+                address:        "contact@cba-trainning.com"
+                sender_name:    "noreply"
+            enabled:    true
+            template:   email/registration.email.twig  
+
+sonata_admin:
+    title: Administration
+    title_logo: img/logo/cba_logo.png
+    
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.block.service.text:
+        sonata.block.service.rss:
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
+    templating: false
+    default_renderer: twig            

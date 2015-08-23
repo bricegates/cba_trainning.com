@@ -1,0 +1,11 @@
+services:
+    sonata.admin.user:
+        class: CBA\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Membre" }
+        arguments:
+            - ~
+            - CBA\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [CBAUserBundle]]
