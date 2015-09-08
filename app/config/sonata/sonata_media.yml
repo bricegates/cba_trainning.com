@@ -3,6 +3,10 @@
 #
 sonata_media:
     db_driver:       doctrine_orm 
+    class:
+        media:              Application\Sonata\MediaBundle\Entity\Media
+        gallery:            Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media:  Application\Sonata\MediaBundle\Entity\GalleryHasMedia
     default_context: default
     contexts:
         default:  
@@ -66,12 +70,24 @@ sonata_media:
     providers:
         # ...
         file:
-            # the resizer must be set to false, otherwhise this can delete icon files from the fs
+            service:    sonata.media.provider.file
             resizer:    false
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['pdf', 'txt', 'tmp','rtf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pttx', 'odt', 'odg', 'odp', 'ods', 'odc', 'odf', 'odb', 'csv', 'xml']
+            allowed_mime_types: ['application/pdf', 'application/x-pdf', 'application/rtf', 'text/html', 'text/rtf', 'text/plain','text/x-tmpl']
+
         image:
-           thumbnail: sonata.media.thumbnail.format          # default value
-#           thumbnail: sonata.media.thumbnail.consumer.format # can be used to dispatch the resize action to async task
-#            thumbnail: sonata.media.thumbnail.liip_imagine    # use the LiipImagineBundle to resize the image
+            service:    sonata.media.provider.image
+            resizer:    sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['jpg', 'png', 'jpeg']
+            allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png']
         vimeo:
             thumbnail: sonata.media.thumbnail.format          # default value
 #           thumbnail: sonata.media.thumbnail.consumer.format # can be used to dispatch the resize action to async task
@@ -87,7 +103,8 @@ sonata_media:
 
     pixlr:
         enabled:  true
-        referrer: Demo - Sonata Project
+        secret:   theSecretHash
+        referrer: Application Name
 
     resizer:
         simple:

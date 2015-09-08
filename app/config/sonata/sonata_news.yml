@@ -10,7 +10,21 @@ sonata_news:
             emails:   [email@example.org, email2@example.org]
             from:     no-reply@sonata-project.org
             template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
+    class:
+        post:       Application\Sonata\NewsBundle\Entity\Post
+        comment:    Application\Sonata\NewsBundle\Entity\Comment
+        media:      Application\Sonata\MediaBundle\Entity\Media
+        user:       CBA\UserBundle\Entity\User
 
+    admin:
+        post:
+            class:       Sonata\NewsBundle\Admin\PostAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataNewsBundle
+        comment:
+            class:       Sonata\NewsBundle\Admin\CommentAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataNewsBundle
 doctrine:
     orm:
         entity_managers:

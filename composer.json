@@ -49,7 +49,7 @@
         "jms/security-extra-bundle": "~1.5",
         "jms/di-extra-bundle": "~1.4",
         "jms/serializer-bundle": "~0.11",
-        "egeloen/ckeditor-bundle": "^2.3"        
+        "egeloen/ckeditor-bundle": "~2.3"        
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

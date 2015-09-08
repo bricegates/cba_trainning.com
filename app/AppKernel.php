@@ -29,26 +29,25 @@ class AppKernel extends Kernel {
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-
+            
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
-                                new JMS\SerializerBundle\JMSSerializerBundle(),
-                        new Sonata\MediaBundle\SonataMediaBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Sonata\UserBundle\SonataUserBundle(),
-                        new Sonata\NewsBundle\SonataNewsBundle(),
-             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
-            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+            new Sonata\NewsBundle\SonataNewsBundle(),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
-                        new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
             new Sonata\ClassificationBundle\SonataClassificationBundle(),
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
             new Sonata\DatagridBundle\SonataDatagridBundle(),
-
         );
 
         // Some bundles are only used while developing the application or during
